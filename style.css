@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  color: white;
+  transition: 0.2s;
+}
+
+:root {
+  --main-color: #001d2a;
+  --main-color2: #013046;
+  --main-color-hover: #024d6f;
+  --x-color: #ffd100;
+  --o-color: #00d487;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--main-color);
+}
+
+main {
+  text-align: center;
+
+  header {
+    margin-top: 40px;
+    font-size: 30px;
+
+    span {
+      font-size: 40px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+
+      span {
+        font-size: 32px;
+      }
+    }
+  }
+
+  .Game__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    width: 300px;
+    height: 300px;
+    margin: 30px auto 20px;
+
+    .box {
+      width: calc(100% / 3 - 6px);
+      height: calc(100% / 3 - 6px);
+      background-color: var(--main-color2);
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 74px;
+
+      &:hover {
+        background-color: var(--main-color-hover);
+      }
+
+      &.noClick {
+        pointer-events: none;
+      }
+
+      p {
+        &.draw {
+          animation: draw 1s linear;
+          animation-fill-mode: forwards;
+        }
+      }
+    }
+
+    &.noClick {
+      pointer-events: none;
+    }
+  }
+
+  .resetBtn {
+    background-color: var(--main-color2);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 22px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--main-color-hover);
+    }
+  }
+}
+
+@keyframes draw {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
