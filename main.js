@@ -1,7 +1,7 @@
 const header = document.querySelector("header");
 const gameContainer = document.querySelector(".Game__container");
 const resetBtn = document.querySelector(".resetBtn");
-const boxes = Array.from(document.querySelectorAll(".box"));
+const boxes = Array.from(document.querySelectorAll(".box p"));
 
 let player = "x";
 let win = false;
@@ -48,10 +48,10 @@ const checkWin = () => {
 const checkDraw = () => {
   if (boxes.every((box) => box.textContent !== "")) {
     boxes.forEach((box) => {
-      box.children[0].classList.add("draw");
+      box.classList.add("draw");
       setTimeout(() => {
-        box.children[0].classList.remove("draw");
-        box.children[0].innerHTML = "";
+        box.classList.remove("draw");
+        box.textContent = "";
         box.classList.remove("noClick");
       }, 1000);
     });
